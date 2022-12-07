@@ -41,6 +41,9 @@ internal class Puzzle7 : PuzzleBase<Dir, long>
         {
             _validDirectories.Add(new(childSize, CurrentCandidate));
         }
+        //else
+        //{
+        //}
 
         return childSize;
     }
