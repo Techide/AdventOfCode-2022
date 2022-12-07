@@ -1,7 +1,6 @@
-﻿internal abstract class PuzzleBase<Tin, Tout>
+﻿internal abstract class PuzzleBase<Tin, Tout> : IRunnablePuzzle
 {
-
-    internal virtual void Solve(int puzzle)
+    public virtual void Solve(int puzzle)
     {
         Tin dataset = GetDataset();
         Tout partOneResult = PartOne(dataset);

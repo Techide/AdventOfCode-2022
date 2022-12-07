@@ -21,7 +21,7 @@ internal class Puzzle7 : PuzzleBase<Dir, long>
 
     internal override long PartOne(Dir dataset)
     {
-        Func<long, long, bool> belowPredicate = (a, b) => { return a <= b; };
+        static bool belowPredicate(long a, long b) { return a <= b; }
         _ = FindCandidates(dataset, 100000, belowPredicate );
         
         return _validDirectories.Aggregate((long)0, (value, item) => value + item.TotalSize);
@@ -52,7 +52,7 @@ internal class Puzzle7 : PuzzleBase<Dir, long>
         long driveMax = 70000000;
         long patchSize = 30000000;
 
-        Func<long, long, bool> abovePredicate = (a, b) => { return a > b; };
+        bool abovePredicate(long a, long b) { return a > b; }
         _ = FindCandidates(dataset, 0, abovePredicate);
 
         long freeSpace = driveMax - _validDirectories.MaxBy(x => x.TotalSize).TotalSize;

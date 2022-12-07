@@ -1,7 +1,58 @@
-﻿//new Puzzle1().Solve(1);
-//new Puzzle2().Solve(2);
-//new Puzzle3().Solve(3);
-//new Puzzle4().Solve(4);
-//new Puzzle5().Solve(5);
-//new Puzzle6().Solve(6);
-new Puzzle7().Solve(7);
+﻿using System.Reflection;
+
+var assembly = Assembly.GetExecutingAssembly();
+var types = assembly.GetTypes()
+    .Where(t => t.Name.StartsWith("puzzle", StringComparison.OrdinalIgnoreCase))
+    .Select<Type, (Type type, int day)>(x => new(x, int.Parse(x.Name.Last().ToString())));
+
+int lower = types.MinBy(t => t.day).day;
+int upper = types.MaxBy(t => t.day).day;
+
+
+while (true)
+{
+    var choice = GetInput();
+    if (string.IsNullOrWhiteSpace(choice))
+    {
+        continue;
+    }
+
+    string input = choice!;
+    if (input.Equals("q", StringComparison.OrdinalIgnoreCase)) { break; }
+    if (input.Equals("c", StringComparison.OrdinalIgnoreCase))
+    {
+        Console.Clear();
+        continue;
+    }
+
+    if (!int.TryParse(input, out int day))
+    {
+        continue;
+    }
+
+    if (day < lower || day > upper)
+    {
+        continue;
+    }
+
+    IRunnablePuzzle puzzle = GetPuzzle(day);
+    puzzle.Solve(day);
+
+    Console.WriteLine(string.Empty);
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+}
+
+IRunnablePuzzle GetPuzzle(int day)
+{
+    var type = types.First(x => x.day == day).type;
+
+    return (IRunnablePuzzle)Activator.CreateInstance(type)!;
+}
+
+string? GetInput()
+{
+    Console.Write($"Please choose a day to run [{lower} - {upper}]: ");
+
+    return Console.ReadLine();
+}
