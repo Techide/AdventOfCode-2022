@@ -2,15 +2,6 @@
 
 internal sealed class Puzzle1 : PuzzleBase<IEnumerable<long>, long>
 {
-    internal override void Solve()
-    {
-        var dataset = GetDataset();
-        var partOneResult = PartOne(dataset);
-        var partTwoResult = PartTwo(dataset);
-
-        Console.WriteLine($"1: {new { PartOne = partOneResult, PartTwo = partTwoResult }}");
-    }
-
     internal override IEnumerable<long> GetDataset()
     {
         List<long> sums = new();

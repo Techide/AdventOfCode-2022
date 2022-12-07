@@ -1,14 +1,5 @@
 ﻿internal class Puzzle5 : PuzzleBase<List<StackAction>, string>
 {
-    internal override void Solve()
-    {
-        List<StackAction> dataset = GetDataset();
-        string partOneResult = PartOne(dataset);
-        string partTwoResult = PartTwo(dataset);
-
-        Console.WriteLine($"5: {new { PartOne = partOneResult, PartTwo = partTwoResult }}");
-    }
-
     internal override List<StackAction> GetDataset()
     {
         string[] actionLines = File.ReadAllLines(@".\puzzle 5\input.txt");

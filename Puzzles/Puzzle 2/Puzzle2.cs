@@ -62,16 +62,6 @@ internal sealed class Puzzle2 : PuzzleBase<IEnumerable<Selection>, long>
         public string Me { get; set; } = string.Empty;
     }
 
-    internal override void Solve()
-    {
-
-        var selections = GetDataset();
-        var partOneResult = PartOne(selections);
-        var partTwoResult = PartTwo(selections);
-
-        Console.WriteLine($"2: {new { PartOne = partOneResult, PartTwo = partTwoResult }}");
-    }
-
     internal override IEnumerable<Selection> GetDataset()
     {
         var dataset = File.ReadAllLines(@".\puzzle 2\input.txt");

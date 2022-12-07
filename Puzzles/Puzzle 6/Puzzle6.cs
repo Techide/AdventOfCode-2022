@@ -1,14 +1,5 @@
 ﻿internal class Puzzle6 : PuzzleBase<FileStream, int>
 {
-    internal override void Solve()
-    {
-        FileStream dataset = GetDataset();
-        int partOneResult = PartOne(dataset);
-        int partTwoResult = PartTwo(dataset);
-
-        Console.WriteLine($"6: {new { PartOne = partOneResult, PartTwo = partTwoResult }}");
-    }
-
     internal override FileStream GetDataset()
     {
         return File.OpenRead(@".\puzzle 6\input.txt");
