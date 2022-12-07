@@ -4,21 +4,7 @@ using Puzzles.Puzzle4;
 
 internal class Puzzle4 : PuzzleBase<IEnumerable<Pair>, int>
 {
-    private readonly DatasetGenerator _generator;
-
-    public Puzzle4()
-    {
-        _generator = new DatasetGenerator(@".\puzzle 4\input.txt");
-    }
-
-    internal override void Solve()
-    {
-        var dataset = GetDataset();
-        var partOneResult = PartOne(dataset);
-        var partTwoResult = PartTwo(dataset);
-
-        Console.WriteLine($"4: {new { PartOne = partOneResult, PartTwo = partTwoResult }}");
-    }
+    private DatasetGenerator _generator = null!;
 
     internal override int PartOne(IEnumerable<Pair> dataset)
     {
@@ -38,6 +24,7 @@ internal class Puzzle4 : PuzzleBase<IEnumerable<Pair>, int>
 
     internal override IEnumerable<Pair> GetDataset()
     {
+        _generator = new DatasetGenerator(@".\puzzle 4\input.txt");
         return _generator.GetDataSet();
     }
 }

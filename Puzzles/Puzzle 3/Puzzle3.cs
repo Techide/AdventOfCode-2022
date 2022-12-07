@@ -11,18 +11,9 @@ internal class Puzzle3 : PuzzleBase<string[], long>
 
     private readonly Dictionary<char, int> _priorities = new();
 
-    internal override void Solve()
-    {
-        ConstructPriorities();
-        var dataset = GetDataset();
-        var partOneResult = PartOne(dataset);
-        var partTwoResult = PartTwo(dataset);
-
-        Console.WriteLine($"3: {new { PartOne = partOneResult, PartTwo = partTwoResult }}");
-    }
-
     internal override string[] GetDataset()
     {
+        ConstructPriorities();
         return File.ReadAllLines(@".\puzzle 3\input.txt");
     }
 
