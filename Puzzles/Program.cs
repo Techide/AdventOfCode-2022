@@ -37,10 +37,7 @@ while (true)
 
     IRunnablePuzzle puzzle = GetPuzzle(day);
     puzzle.Solve(day);
-
-    Console.WriteLine(string.Empty);
-    Console.WriteLine("Press any key to continue...");
-    Console.ReadKey();
+    break;
 }
 
 IRunnablePuzzle GetPuzzle(int day)
