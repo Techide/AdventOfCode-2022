@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-internal sealed class Puzzle1 : PuzzleBase<IEnumerable<long>, long>
+internal sealed class Puzzle1 : BasePuzzle<IEnumerable<long>, long>
 {
     internal override IEnumerable<long> GetDataset()
     {

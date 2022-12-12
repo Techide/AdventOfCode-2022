@@ -1,4 +1,4 @@
-﻿internal class Puzzle6 : PuzzleBase<FileStream, int>
+﻿internal class Puzzle6 : BasePuzzle<FileStream, int>
 {
     internal override FileStream GetDataset()
     {

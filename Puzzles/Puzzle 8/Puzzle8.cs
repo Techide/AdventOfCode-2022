@@ -7,7 +7,7 @@
     public int Height { get; set; }
 }
 
-internal class Puzzle8 : PuzzleBase<Tree[,], int>
+internal class Puzzle8 : BasePuzzle<Tree[,], int>
 {
     private int _highestTreeLevel = 0;
     internal override Tree[,] GetDataset()

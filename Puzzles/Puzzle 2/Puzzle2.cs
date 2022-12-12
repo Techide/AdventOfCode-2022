@@ -1,6 +1,6 @@
 ﻿using static Puzzle2;
 
-internal sealed class Puzzle2 : PuzzleBase<IEnumerable<Selection>, long>
+internal sealed class Puzzle2 : BasePuzzle<IEnumerable<Selection>, long>
 {
     internal struct FirstShape
     {

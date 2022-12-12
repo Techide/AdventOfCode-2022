@@ -1,4 +1,4 @@
-﻿internal abstract class PuzzleBase<Tin, Tout> : IRunnablePuzzle
+﻿internal abstract class BasePuzzle<Tin, Tout> : IRunnablePuzzle
 {
     public virtual void Solve(int puzzle)
     {

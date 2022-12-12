@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
 
+string puzzleString = "puzzle";
+
 var assembly = Assembly.GetExecutingAssembly();
 var types = assembly.GetTypes()
-    .Where(t => t.Name.StartsWith("puzzle", StringComparison.OrdinalIgnoreCase))
-    .Select<Type, (Type type, int day)>(x => new(x, int.Parse(x.Name.Last().ToString())));
+    .Where(t => t.Name.StartsWith(puzzleString, StringComparison.OrdinalIgnoreCase))
+    .Select<Type, (Type type, int day)>(x => new(x, int.Parse(x.Name.Substring(puzzleString.Length))));
 
 int lower = types.MinBy(t => t.day).day;
 int upper = types.MaxBy(t => t.day).day;

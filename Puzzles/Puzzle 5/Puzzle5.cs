@@ -1,4 +1,4 @@
-﻿internal class Puzzle5 : PuzzleBase<List<StackAction>, string>
+﻿internal class Puzzle5 : BasePuzzle<List<StackAction>, string>
 {
     internal override List<StackAction> GetDataset()
     {

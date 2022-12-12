@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-internal class Puzzle3 : PuzzleBase<string[], long>
+internal class Puzzle3 : BasePuzzle<string[], long>
 {
     private class RuckSack
     {

@@ -2,7 +2,7 @@
 
 using Puzzles.Puzzle7;
 
-internal class Puzzle7 : PuzzleBase<Dir, long>
+internal class Puzzle7 : BasePuzzle<Dir, long>
 {
     CommandHandler _commandHandler = new(new());
     List<(long TotalSize, Dir Directory)> _validDirectories = new();

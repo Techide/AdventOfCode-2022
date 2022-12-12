@@ -2,7 +2,7 @@
 
 using Puzzles.Puzzle4;
 
-internal class Puzzle4 : PuzzleBase<IEnumerable<Pair>, int>
+internal class Puzzle4 : BasePuzzle<IEnumerable<Pair>, int>
 {
     private DatasetGenerator _generator = null!;
 
