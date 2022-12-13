@@ -1,4 +1,6 @@
-﻿internal readonly struct Operation
+﻿using System.Text;
+
+internal readonly struct Operation
 {
     public readonly int Value;
     public readonly int Cycle;
@@ -51,9 +53,56 @@ internal class Puzzle10 : BasePuzzle<string[], long>
 
     internal override long PartTwo(string[] dataset)
     {
-        long result = 0;
-        return result;
+        long register = 1;
+        int cycle = 1;
+        int drawPosition = 0;
+
+        bool run = true;
+        Queue<Operation> queue = new(ParseInstruction(dataset));
+        StringBuilder display = new();
+        Operation executingOrder = queue.Dequeue();
+        Operation nextOrder = executingOrder;
+        do
+        {
+            if (queue.Count > 0 && executingOrder.Cycle == cycle)
+            {
+                nextOrder = queue.Dequeue();
+            }
+
+            if (drawPosition % 40 == 0 && drawPosition > 0)
+            {
+                display.AppendLine();
+                drawPosition = 0;
+            }
+
+            char pixel = GetIsCycleInSpritePosition(drawPosition, register) ? '#' : '.';
+            display.Append(pixel);
+
+            if (executingOrder.Cycle == cycle)
+            {
+                register += executingOrder.Value;
+                executingOrder = nextOrder;
+            }
+
+            drawPosition++;
+            cycle++;
+            if (queue.Count == 0 && cycle > executingOrder.Cycle)
+            {
+                run = false;
+            }
+        }
+        while (run);
+
+        bool GetIsCycleInSpritePosition(int cycle, long register)
+        {
+            return cycle == register - 1 || cycle == register || cycle == register + 1;
+        }
+
+        Console.WriteLine(display.ToString());
+
+        return 0;
     }
+
 
     private IEnumerable<Operation> ParseInstruction(string[] instructions)
     {
